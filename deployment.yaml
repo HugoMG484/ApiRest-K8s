@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helados-deployment
+spec:
+  replicas: 3 
+  selector:
+    matchLabels:
+      app: helados 
+  template:  
+    metadata:
+      labels:
+        app: helados 
+    spec:
+      containers:
+      - name: helados-container
+        image: 18240384/helados-api:2.0
+        ports:
+        - containerPort: 9000
+          name: http
+          protocol: TCP
